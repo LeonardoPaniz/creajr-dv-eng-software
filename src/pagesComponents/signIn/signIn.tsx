@@ -1,29 +1,48 @@
-import { NextPage } from "next";
+// app/login/page.tsx
+"use client";
+
 import Image from "next/image";
-import "./credentials.css";
-import { useState } from "react";
-import { auth } from "../../lib/firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { useRouter } from "next/router";
+import "./signIn.css";
+import { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/navigation";
+import { AuthContext} from "../../context/AuthContext";
 
-interface Props {}
+interface SignInPageProps {
+  setCredentialOperation?: (value: number) => void;
+}
 
-const Credentials: NextPage<Props> = ({}) => {
+export default function SignInPage({
+  setCredentialOperation,
+}: SignInPageProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const { login, isAuthenticated } = useContext(AuthContext);
+
+  // Redireciona se já estiver autenticado
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/home");
+    }
+  }, [isAuthenticated, router]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      router.replace("/home"); // Redireciona após login
+      alert("batata")
+      await login(email, password);
     } catch (err: any) {
-      setError("Email ou senha incorretos");
-      console.error("Erro ao fazer login:", err.message);
+      alert("Caralho")
+      console.error("Erro no login:", err);
+      setError(err.message || "Email ou senha incorretos");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -47,9 +66,9 @@ const Credentials: NextPage<Props> = ({}) => {
         <div className="credentialsModal">
           <form onSubmit={handleLogin} className="inputDiv">
             <div className="inputGroup" id="email">
-              <label htmlFor="">Email</label>
+              <label htmlFor="email">Email</label>
               <input
-                type="text"
+                type="email"
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -57,7 +76,7 @@ const Credentials: NextPage<Props> = ({}) => {
               />
             </div>
             <div className="inputGroup" id="senha">
-              <label htmlFor="">Senha</label>
+              <label htmlFor="senha">Senha</label>
               <input
                 type="password"
                 id="senha"
@@ -67,20 +86,25 @@ const Credentials: NextPage<Props> = ({}) => {
               />
             </div>
             {error && <p className="error">{error}</p>}
-            <button type="submit">Acessar</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "Carregando..." : "Acessar"}
+            </button>
           </form>
           <div className="subRow">
             <p>
-              <a href="">Esqueci minha senha</a>
+              <a href="/forgot-password">Esqueci minha senha</a>
             </p>
-            <p>
-              <a href="">Desejo me cadastrar</a>
-            </p>
+            {setCredentialOperation && (
+              <p>
+                <a onClick={() => setCredentialOperation(1)}>
+                  Desejo me cadastrar
+                </a>
+              </p>
+            )}
           </div>
         </div>
       </main>
     </div>
   );
-};
+}
 
-export default Credentials;
