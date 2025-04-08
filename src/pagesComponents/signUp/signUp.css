@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #121212;
+  font-family: Arial, sans-serif;
+}
+
+.signup-container {
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 4px 10px #0003;
+}
+
+.signup-card {
+  padding: 0 15px;
+  background: linear-gradient(
+    180deg,
+    rgb(32 64 130 / 50%) 0%,
+    rgba(18, 18, 18, 0) 46%
+  );
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  color: #fff;
+}
+
+.signup-card h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.signup-form {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .form-group {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 8px;
+
+    label {
+      font-size: 12px;
+    }
+  }
+
+  .rowButtons{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+    gap: 1rem;
+  }
+}
+
+.signup-form input,
+.signup-form select {
+  width: 100%;
+  padding: 6px;
+  border: none;
+  border-radius: 5px;
+  background: #2c2c2c;
+  color: #fff;
+}
+
+.inputError{
+  border: 1px solid var(--secondary);
+}
+.errorMessage{
+  font-size: 10px;
+  color: var(--secondary);
+}
+
+.signup-form button {
+  padding: 12px 22px;
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  background: var(--primary);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.signup-form button:hover {
+  background: var(--secondary);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.signup-image {
+  width: 60%;
+  background: url("../../../public/credencials/campusDV.jpg") no-repeat
+    left center;
+  background-size: cover;
+}
