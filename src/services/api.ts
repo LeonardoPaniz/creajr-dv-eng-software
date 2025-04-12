@@ -29,7 +29,7 @@ api.interceptors.response.use(
     if (error.response) {
       if (error.response.status === 401) {
         if (typeof window !== "undefined") {
-          destroyCookie(undefined,"creajr.token");
+          destroyCookie(undefined, "creajr.token");
           window.location.href = "/credencias?session_expired=true";
         }
       }
@@ -47,12 +47,15 @@ export const apiService = {
   async login(email: string, password: string) {
     console.log("BUCETA", { email, password });
     const response = await api.post("/auth/login", { email, password });
+    console.log("MILHO:", response.data);
+
     return response.data;
   },
 
-
   async getProfile(id: string) {
     const response = await api.get(`/auth/profile/${id}`);
+    console.log("getProfile", response.data);
+    
     return response.data;
   },
 
@@ -78,6 +81,19 @@ export const apiService = {
 
     const response = await api.post("/member", payload);
     return response.data;
+  },
+
+  async validateToken(token: string) {
+    try {
+      await api.get("/auth/validate-token", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return { valid: true };
+    } catch (err) {
+      return { valid: false };
+    }
   },
 
   logout() {

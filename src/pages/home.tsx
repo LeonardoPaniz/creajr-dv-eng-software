@@ -1,11 +1,11 @@
-// import { AuthProvider } from "@/context/AuthContext";
+import { AuthProvider } from "@/context/AuthContext";
 import HomePage from "../pagesComponents/home/home";
-import { Providers } from "@/components/Providers";
+// import { Providers } from "@/components/Providers";
 
 export default function Home() {
   return (
-    <Providers>
+    <AuthProvider>
       <HomePage />
-    </Providers>
+    </AuthProvider>
   );
 }

@@ -35,10 +35,8 @@ export default function SignInPage({
     setLoading(true);
 
     try {
-      alert("batata")
       await login(email, password);
     } catch (err: any) {
-      alert("Caralho")
       console.error("Erro no login:", err);
       setError(err.message || "Email ou senha incorretos");
     } finally {

@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { apiService } from "@/services/api";
 import {
   destroyCookie,
+  parseCookies,
   //  parseCookies,
   setCookie,
 } from "nookies";
@@ -48,34 +49,50 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("AuthProvider montado");
-    return () => console.log("AuthProvider desmontado");
+    const { "creajr.token": token } = parseCookies();
+
+    if (token) {
+      apiService
+        .getProfile(token)
+        .then((response) => {
+          setUser(response);
+        })
+        
+        .finally(() => {
+          console.log("user auth:", user);
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
+    }
   }, []);
-  //   useEffect(() => {
-  //     const { 'creajr.token': token } = parseCookies()
 
-  //     if (token) {
-  //     apiService.getProfile(token).then((response) => {
-  //         setUser(response.user);
-  //     });
-  //     }
-
-  //   }, []);
+  useEffect(() => {
+    console.log("Agora o user existe:", user);
+    console.log("isAuthenticated é: ", !!user);
+}, [!!user]);
 
   const login = async (email: string, password: string) => {
+    setLoading(true);
     alert("CHEGOU 1");
     try {
       console.log("CHEGOU 2");
-      const { token, userApi } = await apiService.login(email, password);
-        console.log("CHEGOU 3", { token, userApi });
+      const { token, member } = await apiService.login(email, password);
+      console.log("CHEGOU 3", { token, member });
+      console.log("TESTEEEEE", token);
       setCookie(undefined, "creajr.token", token, {
         maxAge: 60 * 60 * 24 * 7, // 7 days
       });
+      setUser(member);
+      console.log("User é: ", user);
+      console.log("isAuthenticated é: ", !!user);
 
-      setUser(userApi);
-      router.push("/home");
     } catch (error) {
+      console.log("Erro no login:", error);
+      
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 

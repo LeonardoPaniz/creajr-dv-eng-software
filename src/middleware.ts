@@ -1,28 +1,35 @@
 // frontend/middleware.ts
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { parseCookies } from "nookies";
+import { apiService } from "./services/api";
+// import { parseCookies } from "nookies";
 
-export function middleware(request: NextRequest) {
-  const { "creajr.token": token } = parseCookies();
+export async function middleware(request: NextRequest) {
+  const token = request.cookies.get("creajr.token")?.value;
   const { pathname } = request.nextUrl;
 
-  // Rotas que requerem autenticação
-  const protectedRoutes = [
-    // "/home",
-     "/home"];
+  const protectedRoutes = ["/home"];
 
-  // Se tentar acessar rota protegida sem token
   if (protectedRoutes.some((route) => pathname.startsWith(route)) && !token) {
     const loginUrl = new URL("/credenciais", request.url);
-    // loginUrl.searchParams.set("redirect", pathname);
     return NextResponse.redirect(loginUrl);
   }
 
-  // Se tentar acessar login/register com token
   if (["/credenciais"].includes(pathname) && token) {
     return NextResponse.redirect(new URL("/home", request.url));
   }
 
+    if (token && token !== undefined) {
+      const response = await apiService.validateToken(token);
+
+      if (!response.valid) {
+        const res = NextResponse.redirect(new URL("/credenciais", request.url));
+        res.cookies.delete("creajr.token");
+        return res;
+      }
+    }
+
+
   return NextResponse.next();
 }
+
