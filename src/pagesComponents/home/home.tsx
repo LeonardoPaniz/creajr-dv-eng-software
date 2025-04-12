@@ -13,8 +13,9 @@ import { HandMetal, LogOut, Settings, House } from "lucide-react";
 // import { NextPage } from "next";
 import { Menu, X } from "lucide-react";
 import "./home.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import router from "next/router";
+import { useAuth } from "@/context/AuthContext";
 
 const today = new Date();
 
@@ -50,15 +51,12 @@ const data = [
 
 const Home: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuth();
 
   const handleNavigation = (path: string) => {
     router.push(path);
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    alert("batata na home");
-  }, []);
 
   const week = generateWeek();
   return (
@@ -104,8 +102,8 @@ const Home: React.FC = () => {
                 alt=""
               />
               <div>
-                <h3>Leonardo Paniz Aguiar</h3>
-                <p>Membro</p>
+                <h3>{user?.name}</h3>
+                <p>{user?.position}</p>
               </div>
             </div>
             <nav>
@@ -137,7 +135,7 @@ const Home: React.FC = () => {
                   <p>
                     Que bom te ver de volta <HandMetal />
                   </p>
-                  <h2>Leonardo Paniz Aguiar</h2>
+                  <h2>{user?.name}</h2>
                 </div>
                 <p>Ver as metas semanais {"->"}</p>
               </div>

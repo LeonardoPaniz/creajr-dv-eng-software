@@ -12,6 +12,8 @@ export default function Credenciais() {
   const [credentialOperation, setCredentialOperation] = useState(0);
 
     useEffect(() => {
+      console.log("Credenciais => isAuthenticated:", isAuthenticated);
+      
       if (isAuthenticated) {
         router.push("/home");
       }
