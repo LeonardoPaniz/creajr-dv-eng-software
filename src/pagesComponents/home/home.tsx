@@ -97,9 +97,9 @@ const Home: React.FC = () => {
           <div className={`sidebar ${isOpen ? "open" : ""}`}>
             <div className="userRow">
               <img
-                src="/homeImgs/userProfile.webp"
+                src={user?.profile_picture_url || "/homeImgs/userProfile.webp"}
                 className="profilePic"
-                alt=""
+                alt="User Profile"
               />
               <div>
                 <h3>{user?.name}</h3>
