@@ -31,6 +31,7 @@ interface UserType {
   name: string;
   email_personal: string;
   position: string;
+  profile_picture_url: string;
 }
 
 const defaultAuthContext: AuthContextType = {

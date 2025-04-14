@@ -422,13 +422,17 @@ section {
 
 @media (max-width: 600px) {
   .pageLayout {
-    padding: 1rem;
     flex-direction: column;
+    padding: 0;
   }
 
   .header {
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .pageLayout main, .pageLayout aside{
+    padding: 0.5rem 1rem;
   }
 
   .calendar {
@@ -562,11 +566,11 @@ section {
     display: none;
   }
 
-  .sidebar{
+  .sidebar {
     display: none;
   }
 
-  .sidebar.open{
+  .sidebar.open {
     display: flex;
     width: 100%;
   }
