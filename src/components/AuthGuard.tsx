@@ -19,7 +19,6 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
     console.log("AuthGuard => isAuthenticated:", isAuthenticated);
   }, [loading, isAuthenticated]);
 
-
   if (loading) return <div className="p-4">Verificando autenticação...</div>;
   return isAuthenticated ? <>{children}</> : null;
 }

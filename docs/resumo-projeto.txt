@@ -1,0 +1,35 @@
+Projeto: Creajr — Plataforma de Gestão e Colaboração para Alunos de Engenharia
+
+Descrição:
+O Creajr é uma plataforma integrada para gestão de projetos, equipes e recursos voltada para alunos de engenharia. Visa consolidar ferramentas de colaboração, acompanhamento de projetos, documentação e métricas em um único ambiente acessível.
+
+Funcionalidades principais:
+- Gestão de equipes e perfis (times, planos, permissões).
+- Espaço de projetos com boards, templates e artefatos (documentos, modelos).
+- Playground colaborativo para experimentação com modelos e histórico de execuções.
+- Central de documentação, tutoriais e changelog integrado.
+- Painéis analíticos (progresso, uso de recursos e métricas de desempenho).
+- Notificações, agenda de entregas e integração com sistemas acadêmicos.
+- Controles administrativos para cobranças, limites e configurações de time.
+
+Como ressignifica a gestão do Creajr:
+- Centraliza processos: reduz silos de informação e evita redundâncias administrativas.
+- Automatiza rotina: alivia carga manual da coordenação, liberando tempo para atividades pedagógicas.
+- Transparência e rastreabilidade: histórico de decisões, entregas e avaliações acessível a coordenadores e alunos.
+- Dados para decisão: métricas e relatórios orientam priorização de recursos e melhorias curriculares.
+
+Como transforma a relação entre alunos de engenharia:
+- Colaboração contínua: facilita trabalho em equipe, revisão por pares e mentoria.
+- Aprendizado prático: integração entre teoria e prática via projetos reais e playgrounds experimentais.
+- Visibilidade de competências: portfólios e métricas ajudam alunos a demonstrar habilidades para estágio/emprego.
+- Cultura de autonomia: ferramentas que incentivam experimentação, iteração e responsabilização.
+
+Impacto esperado:
+- Melhoria na eficiência da gestão acadêmica e logística de projetos.
+- Aumento do engajamento estudantil e qualidade das entregas.
+- Preparação dos alunos para ambientes profissionais colaborativos e data-driven.
+
+Próximos passos:
+- Implementação incremental dos módulos prioritários (equipes, projetos, playground).
+- Piloto com um grupo de turmas e coleta de feedback.
+- Iteração com base em métricas de uso e satisfação.

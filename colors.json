@@ -1,0 +1,34 @@
+{
+  "ink-black": {
+    "value": "#00020d",
+    "type": "color"
+  },
+  "ink-black-2": {
+    "value": "#0d1b2a",
+    "type": "color"
+  },
+  "bright-teal-blue": {
+    "value": "#0e79b2",
+    "type": "color"
+  },
+  "alice-blue": {
+    "value": "#e3f2fd",
+    "type": "color"
+  },
+  "bright-snow": {
+    "value": "#fafafa",
+    "type": "color"
+  },
+  "sunflower-gold": {
+    "value": "#fab12f",
+    "type": "color"
+  },
+  "pumpkin-spice": {
+    "value": "#fa812f",
+    "type": "color"
+  },
+  "racing-red": {
+    "value": "#dd0303",
+    "type": "color"
+  }
+}

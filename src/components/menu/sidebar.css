@@ -1,109 +1,44 @@
-/* Container principal da aplicação */
-.app-container {
-  display: flex;
-  transition: margin-left 0.3s ease;
+Sidebar CSS Variables :root {
+  --sidebar: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 10.6% 64.9%;
 }
 
-/* Sidebar */
-.sidebar {
-  /* width: 60px; */
-  /* height: 100vh; */
-  /* background-color: #1e1e1e; */
-  color: white;
-  overflow: hidden;
-  transition: width 0.3s ease;
-  display: flex;
-  flex-direction: column;
-      background-color: var(--text);
-    padding: 0 2rem;
-  /* padding-top: 1rem; */
+.dark {
+  --sidebar: 240 5.9% 10%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 224.3 76.3% 94.1%;
+  --sidebar-primary-foreground: 240 5.9% 10%;
+  --sidebar-accent: 240 3.7% 15.9%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 217.2 10.6% 64.9%;
 }
 
-/* Quando a sidebar estiver aberta */
-.sidebar.open {
-  width: 100%;
-  gap: 2rem;
-
-  .userRow {
-    display: flex !important;
-  }
-
-  li {
-    padding: 8px 0;
-    border-bottom: 1px solid #333;
-  }
+/* Custom scrollbar for sidebar content */
+[data-sidebar="content"] {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--sidebar-border)) transparent;
 }
 
-/* Lista de navegação */
-.sidebar ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+[data-sidebar="content"]::-webkit-scrollbar {
+  width: 4px;
 }
 
-.sidebar ul li {
-  /* padding: 15px 20px; */
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  transition: background 0.3s;
-  font-size: 14px;
+[data-sidebar="content"]::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-/* .sidebar ul li:hover {
-  background-color: #333;
-} */
-
-/* Conteúdo principal */
-.main-content {
-  background-color: var(--text);
-  flex: 1;
-  transition: margin-left 0.3s ease;
-  padding: 20px;
-  display: flex;
-  gap: 4rem;
-  flex-direction: column;
-  align-items: flex-start;
-
-}
-.userRow {
-  color: var(--white);
-  cursor: pointer;
-  align-items: center;
-  display: none;
-
-  h3,
-  p {
-    font-size: 12px;
-  }
+[data-sidebar="content"]::-webkit-scrollbar-thumb {
+  background: hsl(var(--sidebar-border));
+  border-radius: 2px;
 }
 
-.userRow:hover {
-  background-color: #333;
-  border-radius: 18px;
-}
-
-/* Quando a sidebar estiver aberta, o conteúdo principal desloca */
-.app-container.sidebar-open .main-content {
-  /* margin-left: 250px; */
-}
-
-/* Botão de abrir/fechar */
-.menu-button {
-  /* position: absolute; */
-  top: 20px;
-  left: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  /* font-size: 24px; */
-  z-index: 1000;
-}
-
-@media (max-width: 600px) {
-  .app-container {
-    display: none;
-  }
+[data-sidebar="content"]::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--sidebar-accent));
 }

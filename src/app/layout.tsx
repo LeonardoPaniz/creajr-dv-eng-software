@@ -1,7 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
-// import { AuthProvider } from "@/context/AuthContext";
 
 import { Providers } from "../components/Providers";
 

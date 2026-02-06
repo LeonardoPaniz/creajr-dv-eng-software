@@ -1,11 +1,14 @@
+// import Sidebar from "@/components/menu/sidebar";
 import { AuthProvider } from "@/context/AuthContext";
+import { AppLayout } from "@/components/layout/AppLayout";
 import HomePage from "../pagesComponents/home/home";
-// import { Providers } from "@/components/Providers";
 
 export default function Home() {
   return (
     <AuthProvider>
-      <HomePage />
+      <AppLayout>
+        <HomePage />
+      </AppLayout>
     </AuthProvider>
   );
 }
